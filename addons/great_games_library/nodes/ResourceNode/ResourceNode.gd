@@ -18,7 +18,7 @@ func _ready()->void:
 		var _new_item:ResourceNodeItem = item.duplicate()
 		
 		if _new_item.make_unique:
-			_new_item.value = _new_item.resource.duplicate()
+			_new_item.value = _new_item.resource.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
 		else:
 			_new_item.value = _new_item.resource
 		dictionary[_new_item.resource_name] = _new_item
@@ -31,7 +31,7 @@ func add_resource(item:ResourceNodeItem)->void:
 	assert(!item.resource_name.is_empty(), "resource_name is used as a key for a dictionary")
 	assert(item.resource != null)
 	if item.make_unique:
-		item.value = item.resource.duplicate()
+		item.value = item.resource.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
 	else:
 		item.value = item.resource
 	list.append(item)

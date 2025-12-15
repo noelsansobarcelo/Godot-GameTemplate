@@ -55,7 +55,7 @@ func _init(_transmission_name:String = "")->void:
 ## Create a new generation for a new attack action.
 ## Do it from root DamageDataResource to copy initial exported values.
 func new_generation()->DamageDataResource:
-	var data:DamageDataResource = self.duplicate()
+	var data:DamageDataResource = self.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
 	data.transmission_name = "damage"
 	#data.resource_name += "_gen"
 	
@@ -65,7 +65,7 @@ func new_generation()->DamageDataResource:
 
 ## Create new split of the same generation, like shrapnels from a granade explosion.
 func new_split()->DamageDataResource:
-	var data:DamageDataResource = self.duplicate()
+	var data:DamageDataResource = self.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
 	#data.resource_name += "_split"
 	return data
 

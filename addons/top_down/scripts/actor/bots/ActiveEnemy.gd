@@ -37,6 +37,8 @@ static func remove_branch(branch:ActiveEnemyResource, caller:ActiveEnemy)->void:
 	if branch.parent == null:
 		return
 	
+	# TODO: Fix bug of alive grand child
+	assert(!branch.parent.children.is_empty())
 	assert(branch.parent.children.has(branch))
 	branch.parent.children.erase(branch)
 	
